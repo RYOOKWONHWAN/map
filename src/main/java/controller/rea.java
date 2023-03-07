@@ -24,6 +24,10 @@ public class rea {
 	ArrayList<String> centerx;
 	ArrayList<String> centery;
 	ArrayList<String> centeraddress;
+	ArrayList<String> urllist;
+	ArrayList<String> phonelist;
+	ArrayList<String> addresslist;
+	ArrayList<String> roadlist;
 
 	public rea() {
 		GetAddress ga= new GetAddress();
@@ -34,6 +38,10 @@ public class rea {
 		centery = new ArrayList<String>();
 		centeraddress = new ArrayList<String>();
 		
+		urllist = new ArrayList<String>();
+		phonelist= new ArrayList<String>();
+		addresslist= new ArrayList<String>();
+		roadlist=new ArrayList<String>();
 		getmapcenter gmc = new getmapcenter(ga.GetAdr().get(0));
 		centeraddress = gmc.centeraddress;
 		centerx = gmc.centerx;
@@ -120,7 +128,10 @@ public class rea {
 
 			xlist.add((String) asd.get("x"));
 			ylist.add((String) asd.get("y"));
-
+			urllist.add("\""+(String)asd.get("place_url")+"\"");
+			phonelist.add("\""+(String)asd.get("phone")+"\"");
+			addresslist.add("\""+(String)asd.get("address_name")+"\"");
+			roadlist.add("\""+(String)asd.get("road_address_name")+"\"");
 		}
 
 	}
@@ -148,6 +159,18 @@ public class rea {
 
 	public ArrayList<String> GetCenteraddress() {
 		return centeraddress;
+	}
+	public ArrayList<String> GetUrllist(){
+		return urllist;
+	}
+	public ArrayList<String> GetPhonelist(){
+		return phonelist;
+	}
+	public ArrayList<String> GetAddresslist(){
+		return addresslist;
+	}
+	public ArrayList<String> GetRoadlist(){
+		return roadlist;
 	}
 
 }
